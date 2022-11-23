@@ -1,3 +1,5 @@
 # learning-JS
 
-## Repository for JavaScript course with Matheus Battisti.
+## Repository for JavaScript and Node course with Matheus Battisti.
+
+
