@@ -1,0 +1,9 @@
+console.log(5 > 2);
+console.log(3 < 1);
+console.log(7 >= 8);
+console.log(5 <= 4);
+console.log(9 == '9');
+console.log(8 != 12);
+console.log(11 === 11);
+console.log('Erick' != 'Paula');
+console.log('Jett' === 'Chamber');
