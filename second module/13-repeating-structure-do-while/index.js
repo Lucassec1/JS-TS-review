@@ -8,6 +8,6 @@ do {
 let y = 5;
 
 do {
-    console.log(y + 5);
+    console.log(y);
     y = y + 5;
 } while (y <= 50);
