@@ -15,5 +15,4 @@ switch (cars) {
         break;
     default: 
         console.log('The car is Toyota');
-        break;
 }
