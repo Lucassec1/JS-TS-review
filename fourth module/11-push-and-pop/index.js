@@ -5,5 +5,5 @@ let removeElement = names.pop();
 console.log(removeElement);
 console.log(names);
 
-nomes.push('Gustavo');
-console.log(nomes)
+names.push('Gustavo');
+console.log(names)

@@ -83,12 +83,23 @@ for(let x = 0; x < words.length; x++) {
 
 // create a object calculator
 let calculator = {
-    add: x + y,
-    subtract: x - y,
-    multiply: x * y,
-    divide: x / y
+    add: function(x, y) {
+        return x + y
+    },
+    subtract: function(x, y){
+        return x - y
+    }, 
+    multiply: function(x, y) {
+        return x * y
+    },
+    divide: function(x, y) {
+        return x / y
+    } 
 }
 
-function calculate (x, y) {
-    if ()
+let calculatorMethods = Object.keys(calculator);
+
+for(let i = 0; i < calculatorMethods.length; i++) {
+    let calculate = calculator[calculatorMethods[i]];
+    console.log(`${calculatorMethods}: The result is ${calculate(20, 10)}`);
 }
