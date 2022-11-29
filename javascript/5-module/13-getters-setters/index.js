@@ -10,9 +10,13 @@ class Dognelson {
 }
 
 Dognelson.prototype.paws = 4;
+Dognelson.prototype.breed = 'Not Defined';
 
 let bulldog = new Dognelson("Bulldog", 'black');
 
 console.log(bulldog);
 
 bulldog.bark();
+
+console.log(Dognelson.prototype.breed);
+console.log(bulldog.breed);
