@@ -4,17 +4,17 @@ let c = 3;
 
 if (b > c) {
     a = b - 3
-    console.log(a);
+    debugger;
 }
 
 
 for(let i = 0; i < a; i++) {
     b++
     b = c + a - 1;
-    console.log(b);
+    debugger;
 }
 
 if (b = c + 3 ) {
-    console.log(a);
+    debugger;
     return a;
 }
