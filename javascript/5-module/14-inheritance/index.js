@@ -10,11 +10,11 @@ console.log(coyote.paws);
 
 class Dognelson extends Mammal {
     constructor(paws, breed) {
-       super(paws, paws);
-       this.breed = breed;
+      super(paws, paws);
+      this.breed = breed;
     }
     bark() {
-        console.log("Au au au")
+      console.log("Au au au")
     }
 }
 
