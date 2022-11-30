@@ -19,7 +19,7 @@ const dRegex2 = /\D/; // [^0-9]
 console.log(dRegex2.test('test'));
 console.log(dRegex2.test(12312451));
 console.log(dRegex2.test(' '));
-console.log(dRegex2.tes21341t('324dsadsadsa'));
+console.log(dRegex2.test('324dsadsadsa'));
 // accepts expressions that don't have just numbers
 
 const sRegex = /\s/; 
@@ -30,7 +30,7 @@ console.log(sRegex.test(' '));
 console.log(sRegex.test('32134124dsadsadsa'));
 // accepts expressions that have empty spaces, breaking lines and tabs
 
-const sRegex2 = /\s/; 
+const sRegex2 = /\S/; 
 
 console.log(sRegex2.test('test'));
 console.log(sRegex2.test(12312451));
