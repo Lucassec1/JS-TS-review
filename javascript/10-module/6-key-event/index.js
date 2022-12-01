@@ -1,24 +1,13 @@
-let btn1 = document.querySelector('#btn1');
-let btn2 = document.querySelector('#btn2');
-let p = document.querySelector('p');
-let a = document.querySelector('a');
-
-function message (e) {
-    console.log('Clicked here');
-    e.stopPropagation();
-}
-
-btn1.addEventListener('click', message);
-
-btn2.addEventListener('click', function(e) {
-    console.log(e);
+window.addEventListener('keydown', function(e) {
+    if (e.key == 'q') {
+        console.log('clicked on letter Q');
+    } else if (e.key == 'Enter') {
+        console.log('clicked on enter');
+    }
 });
 
-p.addEventListener('click', function(e) {
-    console.log('clicked in paragraph');
-});
-
-a.addEventListener('click', function(e) {
-    e.preventDefault();
-    console.log('not change this link');
+window.addEventListener('keyup', function(e) {
+    if (e.key == "Enter") {
+        console.log('released the enter');
+    }
 });
