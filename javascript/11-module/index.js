@@ -174,4 +174,17 @@ function checkWinCondition() {
             console.log('o win');
         }
     }
+
+    // got old
+    let counter = 0;
+
+    for (let i = 0; i < boxes.length; i++) { 
+        if (boxes[i].childNodes[0] != undefined) {
+            counter++;
+        }
+    }
+
+    if (counter == 9) {
+        console.log('got old');
+    }
 }
