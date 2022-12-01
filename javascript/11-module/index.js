@@ -25,6 +25,12 @@ for (let i = 0; i < boxes.length; i++) {
             // compute play
             if (player1 == player2) {
                 player1++;
+
+                if (secondPlayer == 'ai-player') {
+                    // function to execute the move
+                    player2++;
+                    computerPlayer();
+                }
             } else {
                 player2++;
             }
@@ -34,6 +40,22 @@ for (let i = 0; i < boxes.length; i++) {
         }
     });
 } 
+
+// event to find out if it's two players or AI
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(){
+        secondPlayer = this.getAttribute('id');
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = 'none';
+        }
+
+        setTimeout(function() {
+            let container = document.querySelector('#container');
+            container.classList.remove('hide');
+        }, 500);
+    });
+}
 
 // see who will play
 function checkElement(player1, player2) {
@@ -223,5 +245,31 @@ function declareWinner(winner) {
 
     for (let i = 0; i < boxesToRemove.length; i++) {
         boxesToRemove[i].parentNode.removeChild(boxesToRemove[i]);
+    }
+}
+
+// execute AI move logic
+function computerPlayer() {
+    let cloneO = o.cloneNode(true);
+    counter = 0;
+    filled = 0;
+    
+    for (let i = 0; i < boxes.length; i++) {
+        let randomNumber = Math.floor(Math.random() * 5);
+
+        if (boxes[i].childNodes[0] == undefined) {
+            if (randomNumber <= 1) {
+                boxes[i].appendChild(cloneO);
+                counter++;
+                break;
+            }
+        // check how many have already been filled
+        } else {
+            filled++;
+        }
+    }
+
+    if (counter == 0 && filled < 9) {
+        computerPlayer();
     }
 }
