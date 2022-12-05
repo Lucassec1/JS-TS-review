@@ -94,7 +94,34 @@ function createQuestion(i) {
   questionText.textContent = questions[i].question;
   questionNumber.textContent = i + 1;
 
-  
+  // Insert the alternatives
+  questionText[i].answers.forEach(function(answer, i) {
+    // Create the quiz button template
+    const answerTemplate = document.querySelector('.answer-template').cloneNode(true);
+
+    const letterBtn = answerTemplate.querySelector('.btn-letter');
+    const answerText = answerTemplate.querySelector('.question-answer');
+
+    letterBtn.textContent = letters[i];
+    answerText.textContent = answer['answer'];
+
+    answerTemplate.setAttribute('correct-answer', answer['correct']);
+
+    // Remove hide and template class
+    answerTemplate.classList.remove('hide');
+    answerTemplate.classList.remove('answer-template');
+
+    // Enter alternative on screen
+    answersBox.appendChild(answerTemplate);
+
+    // Enter a event click in button
+    answerTemplate.addEventListener('click', function() {
+      console.log(this);
+    });
+  });
+
+  // Increment the question number
+  actualQuestion++;
 }
 
 // Quizz startup
