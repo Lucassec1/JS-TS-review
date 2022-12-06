@@ -82,8 +82,8 @@ function init() {
 // Create a question
 function createQuestion(i) {
   // Clear the previous question
-  const oldButton = answersBox.querySelectorAll('button');
-  oldButton.forEach(function(btn) {
+  const oldButtons = answersBox.querySelectorAll('button');
+  oldButtons.forEach(function(btn) {
     btn.remove();
   })
 
@@ -95,27 +95,27 @@ function createQuestion(i) {
   questionNumber.textContent = i + 1;
 
   // Insert the alternatives
-  questionText[i].answers.forEach(function(answer, i) {
+  questions[i].answers.forEach(function(answer, i) {
     // Create the quiz button template
-    const answerTemplate = document.querySelector('.answer-template').cloneNode(true);
+    const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
 
-    const letterBtn = answerTemplate.querySelector('.btn-letter');
-    const answerText = answerTemplate.querySelector('.question-answer');
+    const letterBtn = answerTemplate.querySelector(".btn-letter");
+    const answerText = answerTemplate.querySelector(".question-answer");
 
     letterBtn.textContent = letters[i];
     answerText.textContent = answer['answer'];
 
-    answerTemplate.setAttribute('correct-answer', answer['correct']);
+    answerTemplate.setAttribute("correct-answer", answer["correct"]);
 
     // Remove hide and template class
-    answerTemplate.classList.remove('hide');
-    answerTemplate.classList.remove('answer-template');
+    answerTemplate.classList.remove("hide");
+    answerTemplate.classList.remove("answer-template");
 
     // Enter alternative on screen
     answersBox.appendChild(answerTemplate);
 
     // Enter a event click in button
-    answerTemplate.addEventListener('click', function() {
+    answerTemplate.addEventListener("click", function() {
       checkAnswer(this);
     });
   });
@@ -126,12 +126,12 @@ function createQuestion(i) {
 
 // Checking user response
 function checkAnswer(btn) {
-  const buttons = answersBox.querySelectorAll('button');
+  const buttons = answersBox.querySelectorAll("button");
 
   // Checks if the answer is correct and adds button classes
   buttons.forEach(function(button) {
-    if (button.getAttribute('correct-answer') === true) {
-      button.classList.add('correct-answer');
+    if(button.getAttribute("correct-answer") === "true") {
+      button.classList.add("correct-answer");
 
       // Check if the user got the question right
       if (btn === button) {
@@ -139,7 +139,7 @@ function checkAnswer(btn) {
         points++;
       }
     } else {
-      button.classList.add('wrong-answer');
+      button.classList.add("wrong-answer");
     }
   });
 
@@ -152,12 +152,53 @@ function nextQuestion() {
   // Timer for the user to see the answers
   setTimeout(function () {
     // Check if still have questions
-    if (actualQuestion.question >= questions.length) {
+    if(actualQuestion >= questions.length) {
       // Displays success message
+      showSucessMessage();
+      return;
     }
     createQuestion(actualQuestion);
-  }, 1500);
+  }, 700);
 }
+
+// Display the final screen
+function showSucessMessage() {
+  hideOrShowQuizz();
+
+  // Exchange success screen data
+
+  // Calculates the score
+  const score = ((points / questions.length) * 100).toFixed(2);
+
+  const displayScore = document.querySelector("#display-score span");
+
+  displayScore.textContent = score.toString();
+
+  // Change the number of correct questions
+  const correctAnswers = document.querySelector("#correct-answers");
+  correctAnswers.textContent = points;
+
+  // Change the total of questions
+  const totalQuestions = document.querySelector("#questions-qty");
+  totalQuestions.textContent = questions.length;
+}
+
+// Show or hide
+function hideOrShowQuizz() {
+  quizzContainer.classList.toggle("hide");
+  scoreContainer.classList.toggle("hide");
+}
+
+// Restart quizz
+const restartBtn = document.querySelector('#restart');
+
+restartBtn.addEventListener('click', function() {
+  // Clear the game
+  actualQuestion = 0;
+  points = 0;
+  hideOrShowQuizz();
+  init();
+});
 
 // Quizz startup
 init();
