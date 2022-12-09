@@ -17,8 +17,7 @@ database
         console.log('Error in connection', error);
     });
 
-
 // Routes
 app.get('/', (req, res) => {
-    res.send('Is running 3');
+    res.send('Is running');
 });
