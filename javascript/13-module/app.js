@@ -25,3 +25,6 @@ database
 app.get('/', (req, res) => {
     res.send('Is running');
 });
+
+// jobs routes
+app.use('/jobs', require('./routes/jobs'));
