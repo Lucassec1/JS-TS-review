@@ -19,7 +19,13 @@ const Job = database.define('job', {
     },
     new_job: {
         type: Sequelize.INTEGER,
-    }
+    },
+    createdAt: {
+        type: Sequelize.DATE
+    },
+    updatedAt: {
+        type: Sequelize.DATE
+    },
 });
 
 module.exports = Job;

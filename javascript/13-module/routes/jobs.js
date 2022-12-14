@@ -7,8 +7,9 @@ router.get('/test', (req, res) => {
 });
 
 // Add job via post
-router.post('/add', (req, res) => {
+router.post('/add', async (req, res) => {
     let {title, salary, company, description, email, new_job} = req.body;
+    console.log(req.body)
 
     // insert
     Job.create({
