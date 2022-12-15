@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const database = require('./db/connection');
 const bodyParser = require('body-parser');
-const { dirname } = require('path');
+const Job = require ('./models/Job');
 
 const PORT = 3000;
 app.listen(PORT, () => {
@@ -35,7 +35,14 @@ database
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index');
+    Job.findAll({order: [
+        ['createdAt', 'DESC']
+    ]})
+    .then(jobs => {
+        res.render('index', {
+            jobs
+        });
+    });
 });
 
 // jobs routes
