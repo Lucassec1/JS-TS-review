@@ -16,7 +16,7 @@ const sequelize = new Sequelize({
 
 const Conection = async () => {
     try {
-        await sequelize.sync({ force: false})
+        await sequelize.sync({force: false})
     } catch(error) {
         console.error(error);
     }
