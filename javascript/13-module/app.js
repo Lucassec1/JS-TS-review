@@ -39,7 +39,7 @@ db
 app.get('/', (req, res) => {
 
   let search = req.query.job;
-  let query  = '%'+search+'%'; // PH -> PHP, Word -> Wordpress, press -> Wordpress
+  let query  = '%'+search+'%'; 
 
   if(!search) {
     Job.findAll({order: [
@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
     .catch(err => console.log(err));
   } else {
     Job.findAll({
-      where: {title: {[Op.like]: query}},
+      where: {title: {[Op.iLike]: query}},
       order: [
         ['createdAt', 'DESC']
     ]})
